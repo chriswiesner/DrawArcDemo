@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="16dip"
+	tools:context=".MainActivity">
+
+	<drawarc.example.com.drawarcdemo.ArcView
+		android:id="@+id/arc_view"
+		android:layout_width="match_parent"
+		android:layout_height="0dip"
+		app:layout_constraintDimensionRatio="w1:1"/>
+
+	<Button
+		android:id="@+id/start_tracing_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:onClick="onStartTracingClicked"
+		android:text="Start Tracing"
+		app:layout_constraintBottom_toTopOf="@+id/stop_tracing_button"/>
+
+	<Button
+		android:id="@+id/stop_tracing_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:onClick="onStopTracingClicked"
+		android:text="Stop Tracing"
+		app:layout_constraintBottom_toBottomOf="parent"/>
+
+	<TextView
+		android:id="@+id/progress_caption"
+		app:layout_constraintBottom_toTopOf="@+id/slow_frames_label"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Angle:"/>
+
+	<SeekBar
+		android:id="@+id/slider"
+		android:layout_width="0dip"
+		app:layout_constraintEnd_toEndOf="parent"
+		android:layout_height="wrap_content"
+		android:progress="70"
+		app:layout_constraintBottom_toTopOf="@+id/slow_frames_label"
+		app:layout_constraintStart_toEndOf="@+id/progress_caption"/>
+
+	<TextView
+		android:id="@+id/slow_frames_label"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toTopOf="@id/start_tracing_button"/>
+
+</android.support.constraint.ConstraintLayout>
