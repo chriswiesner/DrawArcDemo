@@ -6,11 +6,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
-import android.text.format.DateUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.LinearInterpolator;
 
 public class ArcView extends View {
 
@@ -77,25 +75,6 @@ public class ArcView extends View {
 		wheelPaint = new Paint();
 		wheelPaint.setColor(getResources().getColor(R.color.colorPrimary));
 		wheelPaint.setAntiAlias(true);
-	}
-
-	public void startAnimation(int degrees) {
-		animator = setupValueAnimator(degrees);
-		animator.start();
-	}
-
-	private ValueAnimator setupValueAnimator(int degrees) {
-		ValueAnimator va = ValueAnimator.ofFloat(degrees, 0);
-		va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-			@Override
-			public void onAnimationUpdate(ValueAnimator valueAnimator) {
-				currentAngle = (float) valueAnimator.getAnimatedValue();
-				ArcView.this.postInvalidate();
-			}
-		});
-		va.setDuration((long) (degrees / 360f * DateUtils.MINUTE_IN_MILLIS));
-		va.setInterpolator(new LinearInterpolator());
-		return va;
 	}
 
 	private void drawRedCircle(Canvas canvas) {
